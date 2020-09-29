@@ -5,4 +5,64 @@
 {% block content %}
 {% include 'partials/_alerts.html'%}
 
+
+<body>
+
+    
+    
+    <div class="row">
+      <div class="column middle">
+        <h2> Description of Bug </h2>
+    
+    <form action="/action_page.php" method="post">
+     
+       <p> 
+            Select the category of Project: 
+            <select id="select1"> 
+                <option value="general"> [All Projects] General</option> 
+            </select> 
+        </p> 
+        <p> 
+            Select the priority of bug: 
+            <select id="select1"> 
+                <option value="high">High</option> 
+                <option value="low">Low</option> 
+                <option value="urgent">Urgent</option> 
+                <option value="immediate">Immediate</option>
+                <option value="normal">Normal</option> 
+                <option value="none">None</option>   
+            </select> 
+        </p> 
+    <p>
+      <label for="deadline">Deadline for Bug Fixing:</label>
+      <input type="date" id="deadline" name="deadline">
+      <input type="submit">
+    
+    
+        <p> 
+            Select the severity of bug: 
+            <select id="select1"> 
+                <option value="high">High</option> 
+                <option value="low">Low</option> 
+                <option value="medium">Medium</option> 
+                <option value="crash">Crash</option> 
+                <option value="block">Block</option> 
+            </select> 
+        </p> 
+        <label for="description of bug">Description of Bug</label>
+          <input type="text" placeholder="Enter Description of Bug" name="description of bug" required>
+    <br> 
+    
+    
+    
+    Upload the code file here
+    <form action="/action_page.php">
+      <label for="myfile">Select a file:</label>
+      <input type="file" id="myfile" name="myfile"><br><br>
+      <input type="submit">
+    
+    
+        
+</body>
+
 {% endblock %}
