@@ -6,69 +6,86 @@
 {% include 'partials/_alerts.html'%}
 
 
-<body>
 
-    
-    
+<section id="report_issue" class="bg-light py-5">
     <div class="container">
-        <div class="row">
-          <div class="col-md-6 mx-auto">
-                <h2> Description of Bug </h2>
-        
-                <form action="/action_page.php" method="post">
-        
-                <p> 
-                        Select the category of Project: 
-                        <select id="select1"> 
-                            <option value="general"> [All Projects] General</option> 
-                        </select> 
-                </p> 
-                <p> 
-                    Select the priority of bug: 
-                    <select id="select1"> 
-                        <option value="high">High</option> 
-                        <option value="low">Low</option> 
-                        <option value="urgent">Urgent</option> 
-                        <option value="immediate">Immediate</option>
-                        <option value="normal">Normal</option> 
-                        <option value="none">None</option>   
-                    </select> 
-                </p> 
-                <p>
-                <label for="deadline">Deadline for Bug Fixing:</label>
-                <input type="date" id="deadline" name="deadline">
-                <input type="submit">
-                </p> 
-                
-        
-                <p> 
-                        Select the severity of bug: 
-                        <select id="select1"> 
-                            <option value="high">High</option> 
-                            <option value="low">Low</option> 
-                            <option value="medium">Medium</option> 
-                            <option value="crash">Crash</option> 
-                            <option value="block">Block</option> 
-                        </select> 
-                </p> 
-                <label for="description of bug">Description of Bug</label>
-                <input type="text" placeholder="Enter Description of Bug" name="description of bug" required>
-
-            
-        
-        
-                Upload the code file here
-                <form action="/action_page.php">
-                <label for="myfile">Select a file:</label>
-                <input type="file" id="myfile" name="myfile"><br><br>
-                <input type="submit">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4>
+                Report New Bug </h4>
             </div>
-        </div>
+            <div class="card-body">
 
+              {% include 'partials/_alerts.html'%}
+
+                <form action="{% url 'report_issue' %}" method="POST">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                  <label for="issue_title">Title :</label>
+                  <input type="text" name="issue_title" class="form-control" required>
+                </div>
+                
+                
+                <div class="form-group">
+                  <label for="project_type">Select the Category of Project:</label>
+                  <input type="text" name="project_type" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Select the Priority of Bug:</label><br>
+                    <input list="priority_list" type="text" name="priority" class="form-control" required> 
+                    <datalist id="priority_list"> 
+                        <option value="HIGH"> 
+                        <option value="MEDIUM"> 
+                        <option value="LOW"> 
+                    </datalist>
+                    
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="severity">Select the Severity of Bug:</label><br>
+                    <input list="severity_list" name="severity" type="text" class="form-control" required> 
+                    <datalist id="severity_list"> 
+                        <option value="HIGH"> 
+                        <option value="MEDIUM"> 
+                        <option value="LOW"> 
+                    </datalist>
+                </div>
+
+                <div class="form-group">
+                    <label for="deadline">Deadline for Bug Fixing:</label>
+                    <input type="date" id="deadline" name="deadline" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description of Bug:</label>
+                    <input type="text" name="description" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="issue_file">Add Issue Related File:</label><br>
+                    <input type="file" id="issue_file" name="issue_file" >
+                </div>
+                
+                <div class="form-group">
+                    
+                    <input type="submit" value="Report" class="btn btn-secondary btn-block">
+                    <input type="reset"  class="btn btn-secondary btn-block">
+                    
+                </div>
+                
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    
-        
-</body>
+  </section>
+
 
 {% endblock %}

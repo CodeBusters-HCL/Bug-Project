@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+{% load static %}
+
+{% block content %}
+{% include 'partials/_alerts.html'%}
+
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">Issues Catalogue</h1>
+          <p class="lead">List of Bug Issue Reports Submitted by {{user}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- ISSUES -->
+  <section id="listings" class="py-4">
+    <div class="container">
+      <div class="row">
+        
+
+        {%if issues %}
+            {% for issue in issues %}
+
+            
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="card listing-preview">
+                        <div class="card-body">
+                            <div class="listing-heading text-center">
+                                
+                            <h4  class="text-primary"> <i class="fas fa-bug"></i> {{issue.issue_title}}</h4>
+                            <p>
+                                ID: {{issue.issue_id}}</p>
+                            </div>
+                            <hr>
+                            <div class="row py-2 text-secondary">
+                            <div class="col-12">
+                                <i class="fas fa-clock"></i> Issued On : {{issue.issued_on }}</div>
+                            </div>    
+                            <div class="row py-2 text-secondary">
+                            <div class="col-12">
+                                <i class="fas fa-thermometer-three-quarters"></i> Current Status : {{issue.issue_status}} </div>
+                            </div>
+                            <div class="row py-2 text-secondary">
+                            <div class="col-6">
+                                 Priority : {{issue.priority}}</div>
+                            <div class="col-6">
+                                Severity : {{issue.severity}}</div>
+                            </div>
+                            <hr>
+                            <div class="row py-2 text-secondary">
+                            <div class="col-12">
+                                <i class="fas fa-user"></i> Assigned To : {{issue.assigned_to_email}}</div>
+                            </div>
+                            <div class="row text-secondary pb-2">
+                            <div class="col-12">
+                                <i class="fas fa-stopwatch"></i> Deadline : {{issue.deadline | timesince}} left </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+            
+
+        {% else %}
+            <div class="col-md-12">
+                <p>No Issue Submitted by You or Assigned to You</p>
+            </div>
+
+        {% endif %}
+
+
+
+    
+
+        
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  
+{% endblock %}

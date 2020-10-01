@@ -19,6 +19,34 @@
             >
               <a class="nav-link" href="{% url 'dashboard' %}"> Welcome {{user.username}} (Dashboard)</a>
             </li>
+
+            <li  
+                  {% if 'report_issue' in request.path %}    
+                      class="nav-item active mr-3"
+                  {% else %}
+                      class="nav-item mr-3"
+                  {% endif %}
+              >
+              <a class="nav-link" href="{% url 'report_issue'%}">
+                 REPORT A NEW BUG </a>
+            </li>
+
+            {% if user.is_staff == True %}
+              
+                      <li 
+                      {% if 'admin' in request.path %}    
+                        class="nav-item active mr-3"
+                      {% else %}
+                        class="nav-item mr-3"
+                      {% endif %}
+                      >
+                        <a class="nav-link" href="http://localhost:8000/admin"> ADMIN </a>
+                      </li>
+                    
+
+            {% endif %}
+
+              
             <li class="nav-item mr-3">
               <a href="javascript:{document.getElementById('logout').submit()}"
               class = "nav-link">
@@ -30,9 +58,10 @@
 
             </form>
               
-
+          
 
             </li>
+          
 
           {% else %}
             <li 

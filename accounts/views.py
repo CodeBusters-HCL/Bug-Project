@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from issues.models import Issue
+from django.template import context
 
 # Create your views here.
 def register(request):
@@ -56,8 +58,7 @@ def login(request):
         return render(request,'accounts/login.html')
 
 
-def dashboard(request):
-    return render(request,'accounts/dashboard.html')
+
 
 
 def logout(request):
@@ -65,3 +66,4 @@ def logout(request):
         auth.logout(request)
         messages.success(request, 'You are Logged out')
         return redirect('index')
+    
