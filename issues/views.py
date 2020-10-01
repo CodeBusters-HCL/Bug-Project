@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from .models import Issue
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 # Create your views here.
 
@@ -39,9 +40,14 @@ def report_issue(request):
 
 
 def dashboard(request):
-    issues = Issue.objects.filter(issuer_username = request.user.username )
+    issues = Issue.objects.filter(issuer_username = request.user.username ).order_by('deadline')
+    
+    paginator = Paginator(issues, 4)
+    page = request.GET.get('page')
+    paged_listing = paginator.get_page(page)
+    
     context = {
-        'issues': issues
+        'issues': paged_listing
     }
     return render(request,'issues/dashboard.html', context)
 

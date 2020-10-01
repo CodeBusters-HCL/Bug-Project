@@ -7,9 +7,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <ul class="navbar-nav">
+        
           {% if user.is_authenticated %}
-
+          <ul class="navbar-nav mr-auto"> 
             <li 
             {% if 'dashboard' in request.path %}    
               class="nav-item active mr-3"
@@ -17,53 +17,60 @@
               class="nav-item mr-3"
             {% endif %}
             >
-              <a class="nav-link" href="{% url 'dashboard' %}"> Welcome {{user.username}} (Dashboard)</a>
+              <a class="nav-link" href="{% url 'dashboard' %}"> <i class="fas fa-home"></i>  Welcome {{user.username}} (Dashboard) </a>
             </li>
-
-            <li  
-                  {% if 'report_issue' in request.path %}    
-                      class="nav-item active mr-3"
-                  {% else %}
-                      class="nav-item mr-3"
-                  {% endif %}
-              >
-              <a class="nav-link" href="{% url 'report_issue'%}">
-                 REPORT A NEW BUG </a>
-            </li>
-
-            {% if user.is_staff == True %}
-              
-                      <li 
-                      {% if 'admin' in request.path %}    
+          </ul>
+            <ul class="navbar-nav ml-auto">
+            
+              <li  
+                    {% if 'report_issue' in request.path %}    
                         class="nav-item active mr-3"
-                      {% else %}
+                    {% else %}
                         class="nav-item mr-3"
-                      {% endif %}
-                      >
-                        <a class="nav-link" href="http://localhost:8000/admin"> ADMIN </a>
-                      </li>
-                    
+                    {% endif %}
+                >
+                <a class="nav-link" href="{% url 'report_issue'%}">
+                  <i class="fas fa-bug"></i> REPORT A NEW BUG </a>
+              </li>
 
-            {% endif %}
+              {% if user.is_staff == True %}
+                
+                        <li 
+                        {% if 'admin' in request.path %}    
+                          class="nav-item active mr-3"
+                        {% else %}
+                          class="nav-item mr-3"
+                        {% endif %}
+                        >
+                          <a class="nav-link" href="http://localhost:8000/admin"><i class="fas fa-users-cog"></i> ADMIN </a>
+                        </li>
+                      
 
-              
-            <li class="nav-item mr-3">
-              <a href="javascript:{document.getElementById('logout').submit()}"
-              class = "nav-link">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
-            <form action="{% url 'logout' %}" method="POST" id="logout">
-                {% csrf_token%}
-                <input type="hidden">
+              {% endif %}
 
-            </form>
-              
+                
+              <li class="nav-item mr-3">
+                <a href="javascript:{document.getElementById('logout').submit()}"
+                class = "nav-link">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+              <form action="{% url 'logout' %}" method="POST" id="logout">
+                  {% csrf_token%}
+                  <input type="hidden">
+
+              </form>
+                
+            
+
+              </li>
           
-
-            </li>
           
 
           {% else %}
+
+          </ul>
+          
+          <ul class="navbar-nav mr-auto">
             <li 
                   {% if '/' == request.path %}    
                       class="nav-item active mr-3"
@@ -71,8 +78,14 @@
                       class="nav-item mr-3"
                   {% endif %}
               >
-              <a class="nav-link" href="{% url 'index'%}">Home</a>
+              <a class="nav-link" href="{% url 'index'%}"> <i class="fas fa-home"></i> Home</a>
             </li>
+            
+            
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+
             <li 
                   {% if 'about' in request.path %}    
                       class="nav-item active mr-3"
@@ -80,12 +93,8 @@
                       class="nav-item mr-3"
                   {% endif %}
               >
-              <a class="nav-link" href="{% url 'about'%}">About</a>
+              <a class="nav-link" href="{% url 'about'%}"><i class="fas fa-address-card"></i> About Us</a>
             </li>
-            
-          </ul>
-
-          <ul class="navbar-nav ml-auto">
             <li  
                   {% if 'register' in request.path %}    
                       class="nav-item active mr-3"

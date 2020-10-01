@@ -33,7 +33,7 @@ class Issue(models.Model):
     issue_file = models.FileField(upload_to='issues_file/%Y/%m/%d/', blank=True)
     issue_status = models.CharField(max_length=20,default=Status.ACTIVE, choices=Status.choices)
     assigned_to_email = models.EmailField( blank=True)
-    assigned_to_username = models.ForeignKey(User, on_delete=models.DO_NOTHING,blank=True)
+    assigned_to_username = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     assigned_on = models.DateTimeField(blank =True)
     admin_comment = models.TextField(blank=True)
 
