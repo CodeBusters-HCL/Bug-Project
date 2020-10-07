@@ -1,8 +1,8 @@
 from django.db import models
 from datetime import datetime
 import uuid
-from django.contrib.auth.models import User
-#from accounts.models import User
+#from django.contrib.auth.models import User         #uncomment this and commentout below line if inbuilt user is needed
+from accounts.models import User
 from django.utils.translation import gettext_lazy as _
 
 

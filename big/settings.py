@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'big.wsgi.application'
 
 #        'NAME': 'bugfix database',
 
-#AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.User'                #comment this out if inbuilt user needed, also change things in account(models,admin,views), issues(models,views), 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'big.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'random_db',
+        'NAME': 'random1_db',
         'USER': 'postgres',
         'PASSWORD': '    ',
         'HOST': 'localhost'

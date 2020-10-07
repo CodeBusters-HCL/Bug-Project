@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
-from django.contrib.auth.models import User
-#from .models import User
+#from django.contrib.auth.models import User     #uncomment this and commentout below line if inbuilt user is needed
+from .models import User
 from issues.models import Issue
 from django.template import context
 
@@ -15,6 +15,10 @@ def register(request):
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
+        req = request.POST.get('staff_req')
+        staff_req = False
+        if req=="on":
+            staff_req=True
 
         if password == password2:
 
@@ -26,7 +30,8 @@ def register(request):
                     messages.error(request,'That email is taken')
                     return redirect('register')
                 else:
-                    user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
+                    user = User.objects.create_user(username=username, password=password, email=email,
+                                                     first_name=first_name, last_name=last_name, staff_req=staff_req)
                     user.save()
                     messages.success(request, 'You are now registered and can login now.')
                     return redirect('login')
