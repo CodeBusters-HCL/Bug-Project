@@ -40,6 +40,13 @@ def report_issue(request):
 
 
 def dashboard(request):
+    
+
+    return render(request,'issues/dashboard.html')
+
+
+
+def issued_by_me(request):
     issues = Issue.objects.filter(issuer_username = request.user.username ).order_by('deadline')
     
     paginator = Paginator(issues, 4)
@@ -49,7 +56,23 @@ def dashboard(request):
     context = {
         'issues': paged_listing
     }
-    return render(request,'issues/dashboard.html', context)
+
+    return render(request,'issues/issued_by_me.html', context)
+
+
+def assigned_to_me(request):
+    issues = Issue.objects.filter(assigned_to_username= request.user.id ).order_by('deadline')
+    
+    paginator = Paginator(issues, 4)
+    page = request.GET.get('page')
+    paged_listing = paginator.get_page(page)
+    
+    context = {
+        'issues': paged_listing
+    }
+
+
+    return render(request,'issues/assigned_to_me.html', context)
 
 
 

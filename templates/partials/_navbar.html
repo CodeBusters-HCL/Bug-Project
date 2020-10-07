@@ -10,16 +10,42 @@
         
           {% if user.is_authenticated %}
           <ul class="navbar-nav mr-auto"> 
-            <li 
+            
+
+
+            <div class="dropdown show">
+
+              <li 
             {% if 'dashboard' in request.path %}    
               class="nav-item active mr-3"
             {% else %}
               class="nav-item mr-3"
             {% endif %}
             >
-              <a class="nav-link" href="{% url 'dashboard' %}"> <i class="fas fa-home"></i>  Welcome {{user.username}} (Dashboard) </a>
+        
             </li>
+              <a class="btn btn-secondary dropdown-toggle" href="{% url 'dashboard' %}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-home"></i>  Welcome {{user.username}} (Dashboard) 
+              </a>
+            
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="dropdown-item" href="{% url 'assigned_to_me' %}">Assigned Bugs</a>
+                <a class="dropdown-item" href="{% url 'issued_by_me' %}"> Reported Bugs</a>
+                
+              </div>
+            </div>
+
+
+           
+
           </ul>
+          
+
+         
+            
+
+
             <ul class="navbar-nav ml-auto">
             
               <li  
