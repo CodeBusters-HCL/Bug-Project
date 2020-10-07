@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+{% load static %}
+
+{% block content %}
+{% include 'partials/_alerts.html'%}
+
+
+<section id="showcase-inner" class="py-5 text-white">
+
+
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">Dashboard</h1>
+          <p class="lead">Welcome to your Dashboard {{user}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+
+
+
+
+  
+{% endblock %}
