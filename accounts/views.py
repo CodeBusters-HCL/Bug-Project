@@ -4,6 +4,9 @@ from django.contrib import messages, auth
 from .models import User
 from issues.models import Issue
 from django.template import context
+from django.contrib.auth import views as auth_views       #to use the django inbuilt password reset feature
+import math, random 
+from django.contrib.auth.hashers import make_password, check_password
 
 # Create your views here.
 def register(request):
@@ -44,25 +47,54 @@ def register(request):
     else:
         return render(request,'accounts/register.html')
 
+
+def deactivate(request):
+    symbols = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+-_!@#$%^&*():<>;,~`/|"
+    passw = ""
+    length = len(symbols)
+    for i in range(8):
+        passw += symbols[math.floor(random.random() * length)]
+    user = request.user
+    user.is_active=False
+    user.password = make_password(passw)
+    user.save()
+    messages.success(request, 'Profile successfully disabled.')
+    return redirect('index')
+
+
+
+
 def login(request):
     if request.method =='POST':
         username = request.POST['username']
         password = request.POST['password']
-        
-        user = auth.authenticate(username=username, password=password)
 
-        if user is not None:
-            auth.login(request, user)
-            messages.success(request,'You are now logged in')
-            return redirect('dashboard')
+        
+
+        user_exists = User.objects.filter(username=username).exists()
+        if user_exists:
+            user = User.objects.get(username=username)
+            if not user.is_active:
+                messages.error(request, "Your account is inactive, Please reset password before you use it")
+                user.is_active = True
+                user.save()
+                return redirect('reset_password')
+            else:
+                user = auth.authenticate(username=username, password=password)
+                if user is not None:
+                    auth.login(request, user)
+                    messages.success(request,'You are now logged in')
+                    return redirect('dashboard')
+                else:
+                    messages.error(request, 'Invalid Credentials')
+                    return redirect('login')
         else:
-            messages.error(request, 'Invalid Credentials')
+            messages.error(request, 'Invalid usernmame')
             return redirect('login')
 
         
     else:
         return render(request,'accounts/login.html')
-
 
 
 

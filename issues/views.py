@@ -38,7 +38,14 @@ def report_issue(request):
     else:
         return render(request,'issues/report_issue.html')
 
-
+def profile(request):
+    context = {
+        'username': request.user.username,
+        'first_name': request.user.first_name,
+        'last_name': request.user.last_name,
+        'email': request.user.email,
+    }
+    return render(request, 'issues/profile.html', context)
 
 def dashboard(request):
     
@@ -87,6 +94,8 @@ def search(request):
         queryset_list |= orig_queryset_list.filter(description__icontains=search_input)
         queryset_list |= orig_queryset_list.filter(issue_status__icontains=search_input)
         queryset_list |= orig_queryset_list.filter(admin_comment__icontains=search_input)
+        queryset_list |= orig_queryset_list.filter(severity__icontains=search_input)
+        queryset_list |= orig_queryset_list.filter(issue_id__icontains=search_input)
 
     context = {
         'issues':queryset_list

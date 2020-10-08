@@ -148,5 +148,16 @@ MESSAGE_TAGS = {
     
 }
 
+#SMTP Configuration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'                            # change if other host is used
+EMAIL_PORT = 587                                         # change this port to suit urself
+EMAIL_USE_TLS = True                                     # change this to use other
+EMAIL_HOST_USER = ''                                     # put the website email
+EMAIL_HOST_PASSWORD = ''                                 # put the website password
+
+
+
 
 

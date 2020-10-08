@@ -33,6 +33,16 @@
                 <input type="submit" value="Login" class="btn btn-secondary btn-block">
                 <input type="reset"  class="btn btn-secondary btn-block">
               </form>
+
+              <form action="{% url 'reset_password' %}" method="POST" id="reset_password">
+                {% csrf_token%}
+              <div align="center">
+                  <a href="javascript:{document.getElementById('reset_password').submit()}" style="text-decoration:none">
+                      <i class="fas"></i>
+                  <input type="button" name="reset_password" value="Reset Password" class="btn btn-secondary btn-block"></a>  <!--style="width:100px"-->
+              </div>
+            </form>
+
             </div>
           </div>
         </div>

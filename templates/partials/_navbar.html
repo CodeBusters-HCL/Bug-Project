@@ -74,6 +74,22 @@
 
               {% endif %}
 
+
+              {% if user.is_authenticated %}
+
+              <li class="nav-item mr-3">
+                <a href="javascript:{document.getElementById('profile').submit()}"
+                class = "nav-link">
+                  <i class="fas"></i> My Account
+              </a>
+              <form action="{% url 'my_account' %}" method="POST" id="profile">
+                  {% csrf_token%}
+                  <input type="hidden">
+
+              </form>
+              </li>
+              {% endif %}
+
                 
               <li class="nav-item mr-3">
                 <a href="javascript:{document.getElementById('logout').submit()}"
@@ -89,6 +105,8 @@
             
 
               </li>
+
+
               <form action="{% url 'search' %}" method="GET">
                 {% if 'dashboard' in request.path or 'search' in request.path or 'assigned_to_me' in request.path or 'issued_by_me' in request.path %}
                   <div class="form-group"> <!--form-group-->

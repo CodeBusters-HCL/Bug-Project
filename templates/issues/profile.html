@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+{% load static %}
+
+{% block content %}
+{% include 'partials/_alerts.html'%}
+
+
+<section id="showcase-inner" class="py-5 text-white">
+
+
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">Profile</h1>
+          <p class="lead">Welcome to your Profile {{first_name}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+<section id="register" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4>
+                <i class="fas fa-user"></i> Your Profile</h4>
+            </div>
+            <div class="card-body">
+
+              {% include 'partials/_alerts.html'%}
+
+
+              
+                <div class="form-group">
+                  <label for="first_name">First Name: </label> {{first_name}}
+                </div>
+
+                <div class="form-group">
+                  <label for="last_name">Last Name: </label> {{last_name}}
+                </div>
+
+                <div class="form-group">
+                  <label for="username">Username: </label> {{username}}
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email: </label> {{email}}
+                </div>
+
+
+
+
+                  <form action="{% url 'deactivate' %}" method="POST" id="deactivate">
+                      {% csrf_token%}
+                    <div align="center">
+                        <a href="javascript:{document.getElementById('deactivate').submit()}" style="text-decoration:none">
+                            <i class="fas"></i>
+                        <input style="width:100px" type="button" name="deactivate" value="Deactivate" class="btn btn-secondary btn-block"></a>
+                    </div>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
