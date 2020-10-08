@@ -8,4 +8,5 @@ urlpatterns = [
     path('accounts/dashboard',views.dashboard, name= 'dashboard'),
     path('accounts/assigned_to_me',views.assigned_to_me, name= 'assigned_to_me'),
     path('accounts/issued_by_me',views.issued_by_me, name= 'issued_by_me'),
+    path('<uuid:issue_id>',views.onebug, name= 'onebug'),
 ]

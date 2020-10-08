@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
-from .models import Issue
+from .models import Issue,Comment
+from .forms import *
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 # Create your views here.
@@ -45,6 +47,41 @@ def dashboard(request):
     return render(request,'issues/dashboard.html')
 
 
+def onebug(request, issue_id):
+    issue= get_object_or_404(Issue, pk=issue_id)
+    comments = Comment.objects.filter(issue=issue).order_by('-id')
+    
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST or None)
+        context = {
+        'issue':issue,
+        'comments' : comments,
+        'comment_form' : comment_form,
+
+
+    }
+        if comment_form.is_valid():
+            content = request.POST.get('content')
+            comment = Comment.objects.create(issue=issue,user=request.user, content=content )
+            comment.save()
+            return render(request, 'issues/onebug.html',context)
+
+           
+
+    else:
+        comment_form=CommentForm()
+
+    
+    
+    
+    context = {
+        'issue':issue,
+        'comments' : comments,
+        'comment_form' : comment_form,
+
+
+    }
+    return render(request, 'issues/onebug.html',context)
 
 def issued_by_me(request):
     issues = Issue.objects.filter(issuer_username = request.user.username ).order_by('deadline')
@@ -73,6 +110,9 @@ def assigned_to_me(request):
 
 
     return render(request,'issues/assigned_to_me.html', context)
+
+
+
 
 
 

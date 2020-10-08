@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+<section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4"><i class="fas fa-bug"></i>   {{issue.issue_title}}   <i class="fas fa-bug"></i></h1>
+          <br>
+          <p class="lead">
+            {{issue.project_type}} <br> <br> ID : {{issue.issue_id}} </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <!-- Listing -->
+  <section id="listing" class="py-4">
+    <div class="container">
+      <a href="{% url 'dashboard'%}" class="btn btn-light mb-4">Back To Dashboard</a>
+      <div class="row">
+        <div class="col-md">
+          
+          
+          <!-- Fields -->
+          <div class="row mb-5 fields">
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-clock"></i> Issued On :
+                  <span class="float-right">{{issue.issued_on }}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-thermometer-three-quarters"></i> Current Status :
+                  <span class="float-right">{{issue.issue_status}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fab fa-product-hunt"></i> Priority :
+                  <span class="float-right">{{issue.priority}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fab fa-stripe-s"></i> Severity :
+                  <span class="float-right">{{issue.severity}}
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-user"></i> Assigned To :
+                  <span class="float-right">{{issue.assigned_to_username}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-stopwatch"></i> Deadline :
+                  <span class="float-right">{{issue.deadline | timesince}} left
+                  </span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-user-tie"></i>  Issuer Username :
+                  <span class="float-right">{{issue.issuer_username}}</span>
+                </li>
+                <li class="list-group-item text-secondary">
+                  <i class="fas fa-envelope-open-text"></i> Issuer Email :
+                  <span class="float-right">{{issue.issuer_email}}</span>
+                </li>
+
+
+              </ul>
+            </div>
+          </div>
+          <hr>
+          <br>
+
+          <!-- Description -->
+          <div class="row mb-5">
+            <div class="col-md-12">
+              <h2>Description : </h2>
+              <br>
+              {{issue.description}}
+            </div>
+          </div>
+          <hr>
+          <br>
+          <!-- Home Main Image -->
+          <img src="{{issue.issue_file.url}}" alt="" class="img-main img-fluid mb-3">
+
+          <hr>
+          <br>
+
+          
+          <h2>Comments : </h2>
+          <br>
+
+
+
+          <form  method="post">
+            {% csrf_token %}
+            {{comment_form.as_p}}
+            <br>
+            <input type="submit" value="Submit" class="btn btn-outline-success">
+
+          </form>
+            <br>
+
+          {{comments.count}} Comment 
+          {% for comment in comments %}
+
+          <blockquote class="blockquote">
+            <p class="mb-0">{{ comment.content}}</p>
+            <footer class="blockquote-footer">by <cite title="Source Title">{{comment.user | capfirst}}</cite></footer>
+          </blockquote>
+
+          {% endfor %}
+
+
+
+        </div>
+         
+        
+            
+
+
+
+            
+      
+       
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
