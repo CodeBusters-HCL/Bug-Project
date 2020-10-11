@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_tables2',
     'django.contrib.humanize',
+    'rest_framework',
   
 ]
 

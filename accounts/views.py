@@ -7,8 +7,16 @@ from django.template import context
 from django.contrib.auth import views as auth_views       #to use the django inbuilt password reset feature
 import math, random 
 from django.contrib.auth.hashers import make_password, check_password
+from .decorators import authorisation_check
+# from accounts.api.serializers import UserSerializer
+# from rest_framework import status
+from rest_framework.response import Response
+# from rest_framework.decorators import api_view
+
 
 # Create your views here.
+# @api_view(['GET',])
+@authorisation_check
 def register(request):
     if request.method =='POST':
 
@@ -63,7 +71,7 @@ def deactivate(request):
 
 
 
-
+@authorisation_check
 def login(request):
     if request.method =='POST':
         username = request.POST['username']
