@@ -11,10 +11,13 @@
     b) open project folder in vscode (ctrl + K, ctrl + O)<br>
     c) open terminal (ctrl + `)<br>
     d) now type "workon 'virtualenv name'" without quotes;  (everytime you restart the terminal, you need to execute this) <pre>eg. workon test</pre>
-    e) type <pre>pip install django djangorestframework django_tables2</pre>
-    f) execute <pre>python manage.py makemigrations</pre>
-    g) execute <pre>python manage.py migrate</pre>
-    h) execute <pre>python manage.py runserver</pre>
+    e) now install required python packages <pre>pip install django djangorestframework django_tables2</pre>
+    e) now run the commands
+    <pre>
+        python manage.py makemigrations
+        python manage.py migrate
+        python manage.py runserver
+    </pre>
 
 <h2>(OPTIONAL Configuration)</h2>
 
@@ -35,7 +38,9 @@
 </pre>
 5. change the NAME field to the newly created database name and PASSWORD field to the postgres password given while installing in the       &nbsp;above configuration<br>
 6. now run commands
-    a) execute <pre>python manage.py makemigrations</pre>
-    b) execute <pre>python manage.py migrate</pre>
-    c) execute <pre>python manage.py runserver</pre>
+<pre>
+        python manage.py makemigrations
+        python manage.py migrate
+        python manage.py runserver
+</pre>
 
