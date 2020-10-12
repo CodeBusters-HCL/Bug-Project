@@ -1,4 +1,4 @@
-<h2>Instructions to setup the environment<h2>
+<h2>Instructions to setup the environment</h2>
 
 1. install python, add it to the environment path<br>
 2. install vscode<br>
