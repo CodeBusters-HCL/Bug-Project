@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
-#from django.contrib.auth.models import User     #uncomment this and commentout below line if inbuilt user is needed
+# from django.contrib.auth.models import User     #uncomment this and commentout below line if inbuilt user is needed
 from .models import User
 from issues.models import Issue
 from django.template import context

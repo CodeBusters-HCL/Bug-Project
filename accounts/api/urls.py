@@ -7,5 +7,7 @@ app_name = 'accounts'
 urlpatterns = [
     path('users', UserApiView.as_view(), name="users_api"),
     path('users/<pk>', UserApiDetailView.as_view(), name="user_detail"),
+    # path('users/<pk>', UserApiDetailView.as_view(), name="user_delete"),
+    # path('users/<pk>', UserApiDetailView.as_view(), name="user_update"),
     path('register', RegisterApiView.as_view(), name="register"),
 ]

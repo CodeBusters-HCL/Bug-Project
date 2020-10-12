@@ -19,6 +19,17 @@ class RegisterApiView(CreateAPIView):
     queryset = User.objects.last()
     serializer_class = RegistrationSerializer
 
+    def create(self,request):
+
+        serializer = RegistrationSerializer(data=request.data)
+        queryset = User.objects.all()
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message':'Success'})
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 # @api_view(['POST', ])
 # def registration_view(request):
 

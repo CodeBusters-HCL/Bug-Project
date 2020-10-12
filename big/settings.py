@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_tables2',
     'django.contrib.humanize',
-    'rest_framework',
+    'rest_framework',                    #added
   
 ]
 
@@ -93,7 +93,7 @@ AUTH_USER_MODEL = 'accounts.User'                #comment this out if inbuilt us
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'random1_db',
+        'NAME': 'someother',
         'USER': 'postgres',
         'PASSWORD': '    ',
         'HOST': 'localhost'

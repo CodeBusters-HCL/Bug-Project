@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime
 import uuid
-#from django.contrib.auth.models import User         #uncomment this and commentout below line if inbuilt user is needed
+# from django.contrib.auth.models import User         #uncomment this and commentout below line if inbuilt user is needed
 from accounts.models import User
 from django.utils.translation import gettext_lazy as _
 
@@ -23,6 +23,7 @@ class Issue(models.Model):
 
     issue_title = models.CharField(max_length=200)
     issue_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    #issue_id = models.IntegerField(primary_key=True)
     issued_on =models.DateTimeField(default=datetime.now)
     issuer_username = models.CharField(max_length=200,  blank=True)
     issuer_email = models.EmailField(max_length=200, blank=True)

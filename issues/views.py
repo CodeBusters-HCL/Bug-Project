@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
-#from django.contrib.auth.models import User          #uncomment this and commentout below line if inbuilt user is needed
+# from django.contrib.auth.models import User          #uncomment this and commentout below line if inbuilt user is needed
 from accounts.models import User
 from .models import Issue
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator

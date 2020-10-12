@@ -1,5 +1,11 @@
 from rest_framework import serializers
 from accounts.models import User, MyUserManager
+from django.contrib.auth.hashers import make_password, check_password
+# from django.contrib.auth import get_user_model
+# from django.contrib.auth.models import User as django_user
+
+# User = get_user_model()
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -7,7 +13,22 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class RegistrationSerializer(serializers.ModelSerializer):
-    
+    # password2 = serializers.CharField(style = {'input_type':'password'}, write_only=True, label="Confirm Password")
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password', 'staff_req']
+        fields = ['username', 'email', 'password', ]
+        extra_kwargs = {
+            "password":{"write_only":True}
+            }
+
+    def create(self,validated_data):
+        username=validated_data['username']
+        email=validated_data['email']
+        password = validated_data.pop('password')
+        user = User(
+                    username=username,
+                    email=email,
+                )
+        user.set_password(password)
+        user.save()
+        return user

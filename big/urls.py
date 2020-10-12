@@ -12,7 +12,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
 
-    #REST FRAMEWORK API URLS
+    # #REST FRAMEWORK API URLS
     path('accounts/api/', include('accounts.api.urls', 'accounts_api')),
     path('issues/api/', include('issues.api.urls', 'issues_api')),
 
