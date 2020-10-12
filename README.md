@@ -33,6 +33,6 @@ D) goto big/settings.py in the project folder and edit the DATABASES dictionary 
       }
     }
 </pre>
-E) change the NAME field to the newly created database name and PASSWORD field to the postgres password given while installing in the&nbsp;   above configuration<br>
+E) change the NAME field to the newly created database name and PASSWORD field to the postgres password given while installing in the   &nbsp;above configuration<br>
 F) now run commands from 4f, 4g, 4h<br>
 
