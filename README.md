@@ -4,17 +4,17 @@
 2. install vscode<br>
 3. setting up the virtual environment<br>
     a) open cmd<br>
-    b) execute <pre>pip install virtualenvwrapper-win</pre><br>
-    c) mkvirtualenv "somename"  eg. <pre>mkvirtualenv test</pre><br>
+    b) execute <pre>pip install virtualenvwrapper-win</pre>
+    c) mkvirtualenv "somename"  eg. <pre>mkvirtualenv test</pre>
 4. open vscode<br>
     a) install jinja, python extensions<br>
     b) open project folder in vscode (ctrl + K, ctrl + O)<br>
-    c) open terminal <pre>(ctrl + `)</pre><br>
-    d) now type "workon 'virtualenv name'" without quotes  eg. <pre>workon test</pre> ; (everytime you restart the terminal, you need to execute this)<br>
-    e) type <pre>pip install django djangorestframework django_tables2</pre><br>
-    f) execute <pre>python manage.py makemigrations</pre><br>
-    g) execute <pre>python manage.py migrate</pre><br>
-    h) execute <pre>python manage.py runserver</pre><br>
+    c) open terminal <pre>(ctrl + `)</pre>
+    d) now type "workon 'virtualenv name'" without quotes  eg. <pre>workon test</pre> ; (everytime you restart the terminal, you need to execute this)
+    e) type <pre>pip install django djangorestframework django_tables2</pre>
+    f) execute <pre>python manage.py makemigrations</pre>
+    g) execute <pre>python manage.py migrate</pre>
+    h) execute <pre>python manage.py runserver</pre>
 
 (OPTIONAL Configuration)
 
