@@ -12,13 +12,8 @@
     c) open terminal (ctrl + `)<br>
     d) now type "workon 'virtualenv name'" without quotes;  (everytime you restart the terminal, you need to execute this) <pre>eg. workon test</pre>
     e) now install required python packages <pre>pip install django djangorestframework django_tables2</pre>
-    f) now run the commands
-<pre>
- python manage.py makemigrations
- python manage.py migrate
- python manage.py runserver
-</pre>
-
+    f) now run the commands <pre>python manage.py makemigrations</pre><pre>python manage.py migrate</pre><pre>python manage.py migrate</pre><pre>python manage.py runserver</pre>
+ 
 <h2>(OPTIONAL Configuration)</h2>
 
 1. install postgresql, pgadmin4<br>
