@@ -18,10 +18,10 @@
 
 <h2>(OPTIONAL Configuration)</h2>
 
-A) install postgresql, pgadmin4<br>
-B) run pgadmin4<br>
-C) create a database or use the default one<br>
-D) goto big/settings.py in the project folder and edit the DATABASES dictionary to below settings<br>
+1. install postgresql, pgadmin4<br>
+2. run pgadmin4<br>
+3. create a database or use the default one<br>
+4. goto big/settings.py in the project folder and edit the DATABASES dictionary to below settings<br>
 <pre>
     DATABASES = {
       'default': {
@@ -33,6 +33,9 @@ D) goto big/settings.py in the project folder and edit the DATABASES dictionary 
       }
     }
 </pre>
-E) change the NAME field to the newly created database name and PASSWORD field to the postgres password given while installing in the       &nbsp;above configuration<br>
-F) now run commands from 4f, 4g, 4h<br>
+5. change the NAME field to the newly created database name and PASSWORD field to the postgres password given while installing in the       &nbsp;above configuration<br>
+6. now run commands
+    a) execute <pre>python manage.py makemigrations</pre>
+    b) execute <pre>python manage.py migrate</pre>
+    c) execute <pre>python manage.py runserver</pre>
 
