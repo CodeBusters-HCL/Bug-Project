@@ -14,9 +14,9 @@
     e) now install required python packages <pre>pip install django djangorestframework django_tables2</pre>
     e) now run the commands
     <pre>
-        python manage.py makemigrations
-        python manage.py migrate
-        python manage.py runserver
+     python manage.py makemigrations
+     python manage.py migrate
+     python manage.py runserver
     </pre>
 
 <h2>(OPTIONAL Configuration)</h2>
@@ -39,8 +39,8 @@
 5. change the NAME field to the newly created database name and PASSWORD field to the postgres password given while installing in the       &nbsp;above configuration<br>
 6. now run commands
 <pre>
-        python manage.py makemigrations
-        python manage.py migrate
-        python manage.py runserver
+ python manage.py makemigrations
+ python manage.py migrate
+ python manage.py runserver
 </pre>
 
