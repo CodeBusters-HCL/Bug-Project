@@ -1,11 +1,11 @@
-Instructions to setup the environment
+<h2>Instructions to setup the environment<h2>
 
-1. install python, add it to the environment path
-2. install vscode
-3. setting up the virtual environment
-    a) open cmd
-    b) execute "pip install virtualenvwrapper-win" without quotes
-    c) mkvirtualenv "somename"  eg. mkvirtualenv test
+1. install python, add it to the environment path<br>
+2. install vscode<br>
+3. setting up the virtual environment<br>
+    a) open cmd<br>
+    b) execute "pip install virtualenvwrapper-win" without quotes<br>
+    c) mkvirtualenv "somename"  eg. mkvirtualenv test<br>
 4. open vscode
     a) install jinja, python extensions
     b) open project folder in vscode (ctrl + K, ctrl + O)
