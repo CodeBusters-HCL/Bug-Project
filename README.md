@@ -12,7 +12,7 @@
     c) open terminal (ctrl + `)<br>
     d) now type "workon 'virtualenv name'" without quotes;  (everytime you restart the terminal, you need to execute this) <pre>eg. workon test</pre>
     e) now install required python packages <pre>pip install django djangorestframework django_tables2</pre>
-    e) now run the commands
+    f) now run the commands
     <pre>
      python manage.py makemigrations
      python manage.py migrate
