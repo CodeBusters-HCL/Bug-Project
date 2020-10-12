@@ -1,14 +1,11 @@
 Instructions to setup the environment
 
 1. install python, add it to the environment path
-
 2. install vscode
-
 3. setting up the virtual environment
     a) open cmd
     b) execute "pip install virtualenvwrapper-win" without quotes
     c) mkvirtualenv "somename"  eg. mkvirtualenv test
-    
 4. open vscode
     a) install jinja, python extensions
     b) open project folder in vscode (ctrl + K, ctrl + O)
@@ -18,8 +15,7 @@ Instructions to setup the environment
     f) execute "python manage.py makemigrations"
     g) execute "python manage.py migrate"
     h) execute "python manage.py runserver"
-    
-  
+
 (OPTIONAL Configuration)
 
 1. install postgresql, pgadmin4
