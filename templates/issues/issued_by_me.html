@@ -66,7 +66,12 @@
                             <div class="row text-secondary pb-2">
                             <div class="col-12">
                                 <i class="fas fa-stopwatch"></i> Deadline : {{issue.deadline | timesince}} left </div>
+
+
                             </div>
+
+                            <hr>
+                            <a href="{% url 'onebug' issue.issue_id %}" class="btn btn-primary btn-block">More Info</a>
                            
                         </div>
                     </div>
@@ -78,7 +83,7 @@
 
         {% else %}
             <div class="col-md-12">
-                <p>No Issue Submitted by You or Assigned to You</p>
+                <p>No Issue Submitted by You </p>
             </div>
 
         {% endif %}

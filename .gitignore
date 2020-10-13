@@ -11,3 +11,4 @@ venv
 /static
 *initial*.py
 migrations/
+issue_file/

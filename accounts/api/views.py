@@ -4,7 +4,10 @@ from rest_framework.decorators import api_view
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 
 from accounts.models import User, MyUserManager
-from accounts.api.serializers import UserSerializer, RegistrationSerializer
+from accounts.api.serializers import UserSerializer, RegistrationSerializer, LoginSerializer
+
+class LoginApiView():
+    pass
 
 
 class UserApiView(ListAPIView):

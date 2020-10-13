@@ -10,4 +10,5 @@ urlpatterns = [
     path('accounts/issued_by_me',views.issued_by_me, name= 'issued_by_me'),
     path('accounts/search', views.search, name='search'),
     path('accounts/profile', views.profile, name='my_account'),
+    path('<uuid:issue_id>',views.onebug, name= 'onebug'),
 ]

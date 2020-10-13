@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class RegistrationSerializer(serializers.ModelSerializer):
-    # password2 = serializers.CharField(style = {'input_type':'password'}, write_only=True, label="Confirm Password")
+    password = serializers.CharField(style = { 'input_type': 'password' } )
     class Meta:
         model = User
         fields = ['username', 'email', 'password', ]
@@ -32,3 +32,13 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+class LoginSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(style = { 'input_type': 'password' } )
+
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+        extra_kwargs = {
+            "password":{"write_only":True}
+            }

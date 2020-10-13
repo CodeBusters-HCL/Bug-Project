@@ -85,7 +85,6 @@ WSGI_APPLICATION = 'big.wsgi.application'
 
 #        'NAME': 'bugfix database',
 
-AUTH_USER_MODEL = 'accounts.User'                #comment this out if inbuilt user needed, also change things in account(models,admin,views), issues(models,views), 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -99,6 +98,8 @@ DATABASES = {
         'HOST': 'localhost'
     }
 }
+
+AUTH_USER_MODEL = 'accounts.User'                #comment this out if inbuilt user needed, also change things in account(models,admin,views), issues(models,views), 
 
 
 # Password validation
@@ -118,6 +119,15 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
+# SECURE_SSL_REDIRECT = False
 
 
 # Internationalization
@@ -159,6 +169,10 @@ EMAIL_HOST_USER = ''                                     # put the website email
 EMAIL_HOST_PASSWORD = ''                                 # put the website password
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+FILE_UPLOAD_PERMISSIONS = 0o644
+THUMBNAIL_DEBUG = True
 
 
 

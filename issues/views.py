@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 # from django.contrib.auth.models import User          #uncomment this and commentout below line if inbuilt user is needed
 from accounts.models import User
-from .models import Issue
+from .models import Issue, Comment
+from .forms import *
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 # Create your views here.
@@ -23,7 +24,7 @@ def report_issue(request):
             priority = request.POST['priority']
             deadline = request.POST['deadline']
             severity = request.POST['severity']
-            issue_file = request.POST['issue_file']
+            issue_file = request.FILES['issue_file']
             description = request.POST['description']
 
             issue= Issue.objects.create(issuer_username=issuer_username,issuer_email=issuer_email,issue_title=issue_title,project_type=project_type,priority=priority,deadline=deadline,severity=severity,issue_file=issue_file,description=description)
@@ -48,9 +49,44 @@ def profile(request):
     return render(request, 'issues/profile.html', context)
 
 def dashboard(request):
-    
 
     return render(request,'issues/dashboard.html')
+
+def onebug(request, issue_id):
+    issue= get_object_or_404(Issue, pk=issue_id)
+    comments = Comment.objects.filter(issue=issue).order_by('-id')
+    
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST or None)
+        context = {
+        'issue':issue,
+        'comments' : comments,
+        'comment_form' : comment_form,
+
+
+    }
+        if comment_form.is_valid():
+            content = request.POST.get('content')
+            comment = Comment.objects.create(issue=issue,user=request.user, content=content )
+            comment.save()
+            return render(request, 'issues/onebug.html',context)
+
+           
+
+    else:
+        comment_form=CommentForm()
+
+    
+    
+    
+    context = {
+        'issue':issue,
+        'comments' : comments,
+        'comment_form' : comment_form,
+
+
+    }
+    return render(request, 'issues/onebug.html',context)
 
 
 

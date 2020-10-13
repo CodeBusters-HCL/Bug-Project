@@ -39,10 +39,26 @@ class Issue(models.Model):
     assigned_on = models.DateTimeField(blank =True, null=True)
     admin_comment = models.TextField(blank=True)
 
-def __str__(self):
-    self.issue_title
+    def __str__(self):
+        self.issue_title
 
 
+class Comment(models.Model):
+    issue = models.ForeignKey(Issue,on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
+    content = models.TextField(max_length=200, blank=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '{}-{}'.format(self.issue.issue_id,str(self.user.username))
+
+
+# def Profile(models.Model):
+#     name = models.CharField(max_length=50)
+#     picture = models.ImageField(upload_to = 'pictures')
+
+#     class Meta:
+#         db_table = "profile"
 
 
 

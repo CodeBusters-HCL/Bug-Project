@@ -20,8 +20,9 @@
 
               {% include 'partials/_alerts.html'%}
 
-                <form action="{% url 'report_issue' %}" method="POST">
+                <form action="{% url 'report_issue' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+               
                 
                 <div class="form-group">
                   <label for="issue_title">Title :</label>
@@ -30,12 +31,12 @@
                 
                 
                 <div class="form-group">
-                  <label for="project_type">Select the Category of Project:</label>
+                  <label for="project_type">Category of Project :</label>
                   <input type="text" name="project_type" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="priority">Select the Priority of Bug:</label><br>
+                    <label for="priority">Priority of Bug :</label><br>
                     <input list="priority_list" type="text" name="priority" class="form-control" required> 
                     <datalist id="priority_list"> 
                         <option value="HIGH"> 
@@ -47,7 +48,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="severity">Select the Severity of Bug:</label><br>
+                    <label for="severity">Severity of Bug :</label><br>
                     <input list="severity_list" name="severity" type="text" class="form-control" required> 
                     <datalist id="severity_list"> 
                         <option value="HIGH"> 
@@ -57,18 +58,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="deadline">Deadline for Bug Fixing:</label>
+                    <label for="deadline">Deadline for Bug Fixing :</label>
                     <input type="date" id="deadline" name="deadline" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Description of Bug:</label>
+                    <label for="description">Description of Bug :</label>
                     <input type="text" name="description" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label for="issue_file">Add Issue Related File:</label><br>
-                    <input type="file" id="issue_file" name="issue_file" >
+                    <input type="file" id="issue_file" name="issue_file" multiple>
                 </div>
                 
                 <div class="form-group">
