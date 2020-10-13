@@ -22,11 +22,13 @@
  
 <h2>(OPTIONAL Configuration)</h2>
 <h4>Setting up virtual environment</h4>
-1. Setting up the virtual environment  (optional, if using builtin environmet)<br>
-    a) Open cmd<br>
-    b) Execute <pre>pip install virtualenvwrapper-win</pre>
-    c) mkvirtualenv "somename"  <pre>eg. mkvirtualenv test</pre>
-    d) now type "workon 'virtualenv name'" without quotes; (optional if using builtin environment)(everytime you restart the terminal, you need to execute this) <pre>eg. workon test</pre>
+<li>
+Setting up the virtual environment  (optional, if using builtin environmet)<br>
+    <li>
+      Open cmd<br>
+      Execute <pre>pip install virtualenvwrapper-win</pre>
+      mkvirtualenv "somename"  <pre>eg. mkvirtualenv test</pre>
+      Now type "workon 'virtualenv name'" without quotes; (optional if using builtin environment)(everytime you restart the terminal, you need to execute this) <pre>eg. workon test</pre></li>
 <h4>Setting up the custom sql database</h4>
 2. Install <a href="https://www.postgresql.org/download/" style="text-decoration: none">postgresql</a>, <a href="https://www.pgadmin.org/download/" style="text-decoration: none">pgadmin4</a><br>
 3. Run pgadmin4<br>
@@ -51,7 +53,7 @@
  python manage.py migrate
  python manage.py runserver
 </pre>
-
+</li>
 <h2>NOTES</h2>
 We need to turn on the less secure apps feature in google settings because of the google security feature.<br>
 Coming to giving gmail id, password, we are using for testing purpose. After deploying we can give the new mail backend for the website.<br>
