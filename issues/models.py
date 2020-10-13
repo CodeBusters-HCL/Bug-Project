@@ -32,21 +32,21 @@ class Issue(models.Model):
     deadline = models.DateField(blank=True)
     severity = models.CharField(max_length=20,choices=Level.choices,default=Level.LOW ,blank=True)
     description = models.TextField(blank=True)
-    issue_file = models.FileField(upload_to='issues_file/%Y/%m/%d/', blank=True)
+    issue_file = models.FileField(upload_to='issues_file/%Y/%m/%d/', blank=True, null=True)
     issue_status = models.CharField(max_length=20,default=Status.ACTIVE, choices=Status.choices)
     assigned_to_email = models.EmailField( blank=True)
     assigned_to_username = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
     assigned_on = models.DateTimeField(blank =True, null=True)
     admin_comment = models.TextField(blank=True)
 
-    def __str__(self):
-        self.issue_title
+def __str__(self):
+    self.issue_title
 
 
 class Comment(models.Model):
-    issue = models.ForeignKey(Issue,on_delete=models.DO_NOTHING)
+    issue = models.ForeignKey(Issue,on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.DO_NOTHING)
-    content = models.TextField(max_length=200, blank=True)
+    content = models.TextField(max_length=1000, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

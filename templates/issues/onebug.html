@@ -88,8 +88,11 @@
           <hr>
           <br>
           <!-- Home Main Image -->
+          {% if issue.issue_file %}
           <img src="{{issue.issue_file.url}}" alt="issue.issue_title" class="img-main img-fluid mb-3">
-
+          {% else %}
+          <h5>No attachment available</h5>
+          {% endif %}
           <hr>
           <br>
 
@@ -97,9 +100,9 @@
           <h2>Comments : </h2>
           <br>
 
+          <!--<input style="width: 100%;" autocorrect="off" autocapitalize="off" class="_56bg _55ws _5ruq">-->
 
-
-          <form  method="post" enctype="multipart/form-data">
+          <form  method="post" enctype="multipart/form-data" style="width: 100%;">
             {% csrf_token %}
             {{comment_form.as_p}}
             <br>
@@ -115,6 +118,7 @@
             <p class="mb-0">{{ comment.content}}</p>
             <footer class="blockquote-footer">by <cite title="Source Title">{{comment.user | capfirst}}</cite></footer>
           </blockquote>
+
 
           {% endfor %}
 

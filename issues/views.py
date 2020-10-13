@@ -24,7 +24,7 @@ def report_issue(request):
             priority = request.POST['priority']
             deadline = request.POST['deadline']
             severity = request.POST['severity']
-            issue_file = request.FILES['issue_file']
+            issue_file = request.FILES.get('issue_file')
             description = request.POST['description']
 
             issue= Issue.objects.create(issuer_username=issuer_username,issuer_email=issuer_email,issue_title=issue_title,project_type=project_type,priority=priority,deadline=deadline,severity=severity,issue_file=issue_file,description=description)
